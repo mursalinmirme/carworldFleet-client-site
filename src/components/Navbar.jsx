@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
+  
   const listItems = (
     <>
       <NavLink to="/">
@@ -47,7 +49,10 @@ const Navbar = () => {
             {listItems}
           </ul>
         </div>
-        <a className="normal-case text-2xl font-saraban font-bold">CarWorldFleet</a>
+        <a className="normal-case relative flex items-center text-2xl font-saraban font-bold">
+          <h1>CarWorldFleet</h1>
+          <img className="w-16 absolute right-10 bottom-2.5" src={logo} alt="" />
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 flex space-x-8 text-lg font-medium">{listItems}</ul>

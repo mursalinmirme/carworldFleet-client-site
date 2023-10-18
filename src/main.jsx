@@ -9,6 +9,8 @@ import AddProduct from './pages/AddProduct'
 import MycartPage from './pages/MycartPage'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+import AddBrands from './pages/AddBrands'
+import AuthProvider from './authProvider/AuthProvider'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -35,11 +37,17 @@ const router = createBrowserRouter([
         path: '/signin',
         element: <Signin></Signin>,
       },
+      {
+        path: '/addBrands',
+        element: <AddBrands></AddBrands>,
+      },
     ]
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+       <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
