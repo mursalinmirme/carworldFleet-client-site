@@ -1,8 +1,27 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/logo.png';
+import { useContext } from "react";
+import { authContext } from "../authProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-  
+  const { user, userLogout } = useContext(authContext);
+  const handleLogout = () => {
+    userLogout()
+    .then(res => {
+      console.log(res);
+      Swal.fire({
+        position: 'center-center',
+        icon: 'success',
+        title: 'Logout Successfully',
+        showConfirmButton: false,
+        timer: 2000
+      })
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }
   const listItems = (
     <>
       <NavLink to="/">
@@ -20,6 +39,13 @@ const Navbar = () => {
           <span className={isActive ? "text-red-500" : ""}>My Cart</span>
         )}
       </NavLink>
+      {
+        user ? '' : <NavLink to="/signin">
+        {({ isActive }) => (
+          <span className={isActive ? "text-red-500" : ""}>Sign in</span>
+        )}
+      </NavLink>
+      }
     </>
   );
   return (
@@ -57,8 +83,14 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 flex space-x-8 text-lg font-medium">{listItems}</ul>
       </div>
-      <div className="navbar-end">
-        <Link to={'/signin'}><button className="text-lg font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Login</button></Link>
+      <div className="navbar-end gap-4">
+      <p className="font-semibold text-lg">{user?.displayName}</p>
+      <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+      {
+        user ?
+        <button onClick={handleLogout} className="text-lg font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Logout</button> : <Link to={'/signin'}><button className="text-lg font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Login Now</button></Link>
+       
+      }
       </div>
     </div>
   );

@@ -1,20 +1,57 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { authContext } from '../authProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Signin = () => {
+    const { signinByemailandPassword } = useContext(authContext);
+    const navigate = useNavigate();
+    const handleSigninByEmail = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signinByemailandPassword(email, password)
+        .then(() => {
+            Swal.fire({
+                position: 'center-center',
+                icon: 'success',
+                title: 'Login successfully',
+                showConfirmButton: false,
+                timer: 2000
+              })
+              form.reset();
+              navigate('/')
+        })
+        .catch(error => {
+            if(error.message === 'Firebase: Error (auth/invalid-login-credentials).'){
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Login Credintials',
+                    text: `Email and password doesn't match`,
+                  })
+            }
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Login Credintials',
+                text: error.message,
+              })
+        })
+    }
     return (
         <div className="w-full bg-base-200">
             <div className="w-11/12 mx-auto py-10">
                 <div className="w-[600px] mx-auto bg-white px-10 pt-10 pb-16">
                     <p className='text-center text-[#CC6119]'>Welcom Back</p>
                   <h3 className="text-center text-2xl font-semibold mt-3">{`Let's Explore Now`}</h3>
-                  <form>
+                  <form onSubmit={handleSigninByEmail}>
                      <div className="flex flex-col mt-6">
                         <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Email</label>
-                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="email" name="email" id="" />
+                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="email" name="email" id="email" required />
                      </div>
                      <div className="flex flex-col mt-6">
                         <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Password</label>
-                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="password" name="" id="" />
+                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="password" name="password" id="password" required autoComplete='' />
                      </div>
                      <button className="btn w-full mt-9 text-white bg-[#CC6119] hover:bg-[#d88d5a]" type="submit">Sign In</button>
                   </form>
