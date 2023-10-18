@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 
 const Signup = () => {
-   const { SignupWithEmailandPassword, updateUserProfile } = useContext(authContext);
+   const { SignupWithEmailandPassword, updateUserProfile, googleLogin } = useContext(authContext);
    const navigate = useNavigate();
    const handleSignupWithEmail = (e) => {
       e.preventDefault();
@@ -51,6 +51,32 @@ const Signup = () => {
           })
       })
    }
+
+   const handleSignupWithGoogle = () => {
+      googleLogin()
+      .then(res => {
+         console.log(res);
+         Swal.fire({
+            position: 'center-center',
+            icon: 'success',
+            title: 'Registration Successfully',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          navigate('/');
+      })
+      .catch(error => {
+         console.log(error.message);
+         Swal.fire({
+            position: 'center-center',
+            icon: 'error',
+            title: error.message,
+            showConfirmButton: false,
+            timer: 2000
+          })
+      })
+   }
+
     return (
         <div className="w-full bg-base-200">
             <div className="w-11/12 mx-auto py-10">
@@ -81,7 +107,7 @@ const Signup = () => {
                     <span className="text-lg font-bold">or</span>
                     <span className="border-b-2 w-52"></span>
                   </div>
-                  <button className="btn w-full text-[#CC6119] mt-9 rounded-full border-2 border-[#CC6119] hover:border-white hover:text-white hover:bg-[#f08e4c]" type="submit">Sign Up With Google</button>
+                  <button onClick={handleSignupWithGoogle} className="btn w-full text-[#CC6119] mt-9 rounded-full border-2 border-[#CC6119] hover:border-white hover:text-white hover:bg-[#f08e4c]" type="submit">Sign Up With Google</button>
                 </div>
             </div>
         </div>

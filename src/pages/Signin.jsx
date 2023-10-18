@@ -4,7 +4,7 @@ import { authContext } from '../authProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Signin = () => {
-    const { signinByemailandPassword } = useContext(authContext);
+    const { signinByemailandPassword, googleLogin } = useContext(authContext);
     const navigate = useNavigate();
     const handleSigninByEmail = (e) => {
         e.preventDefault();
@@ -38,6 +38,32 @@ const Signin = () => {
               })
         })
     }
+
+    const handleSigninWithGoogle = () => {
+        googleLogin()
+        .then(res => {
+           console.log(res);
+           Swal.fire({
+              position: 'center-center',
+              icon: 'success',
+              title: 'Sign in successfully',
+              showConfirmButton: false,
+              timer: 2000
+            })
+            navigate('/');
+        })
+        .catch(error => {
+           console.log(error.message);
+           Swal.fire({
+              position: 'center-center',
+              icon: 'error',
+              title: error.message,
+              showConfirmButton: false,
+              timer: 2000
+            })
+        })
+     }
+
     return (
         <div className="w-full bg-base-200">
             <div className="w-11/12 mx-auto py-10">
@@ -61,7 +87,7 @@ const Signin = () => {
                     <span className="text-lg font-bold">or</span>
                     <span className="border-b-2 w-52"></span>
                   </div>
-                  <button className="btn w-full text-[#CC6119] mt-9 rounded-full border-2 border-[#CC6119] hover:border-white hover:text-white hover:bg-[#f08e4c]" type="submit">Sign In With Google</button>
+                  <button onClick={handleSigninWithGoogle} className="btn w-full text-[#CC6119] mt-9 rounded-full border-2 border-[#CC6119] hover:border-white hover:text-white hover:bg-[#f08e4c]" type="submit">Sign In With Google</button>
                 </div>
             </div>
         </div>
