@@ -11,6 +11,10 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import AddBrands from './pages/AddBrands'
 import AuthProvider from './authProvider/AuthProvider'
+import BrandView from './pages/BrandView'
+import SingleCarDetails from './pages/SingleCarDetails'
+import UpdateProducts from './pages/UpdateProducts'
+import AddBanners from './pages/AddBanners'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,6 +24,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:4100/brands'),
       },
       {
         path: '/addProduct',
@@ -40,6 +45,25 @@ const router = createBrowserRouter([
       {
         path: '/addBrands',
         element: <AddBrands></AddBrands>,
+      },
+      {
+        path: '/addBanners',
+        element: <AddBanners></AddBanners>,
+      },
+      {
+        path: '/brandsCar/:brand',
+        element: <BrandView></BrandView>,
+        loader: ({params}) => fetch(`http://localhost:4100/brandsCar/${params.brand}`),
+      },
+      {
+        path: '/brandsCar/:brand/:car',
+        element: <SingleCarDetails></SingleCarDetails>,
+        loader: ({params}) => fetch(`http://localhost:4100/brandsCar/${params.brand}/${params.car}`),
+      },
+      {
+        path: '/cars/:carId',
+        element: <UpdateProducts></UpdateProducts>,
+        loader: ({params}) => fetch(`http://localhost:4100/cars/${params.carId}`),
       },
     ]
   }
