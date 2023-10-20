@@ -80,24 +80,24 @@ const Signup = () => {
     return (
         <div className="w-full bg-base-200">
             <div className="w-11/12 mx-auto py-10">
-                <div className="lg:w-[600px] mx-auto bg-white px-10 pt-10 pb-16">
+                <div className="lg:w-[600px] mx-auto bg-base-100 px-10 pt-10 pb-16">
                   <h3 className="text-center text-2xl font-semibold">{`Let's create an account`}</h3>
                   <form onSubmit={handleSignupWithEmail}>
                      <div className="flex flex-col mt-10">
                         <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Name</label>
-                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="text" name="name" id="name" />
+                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="text" name="name" id="name" placeholder="Enter your name" required />
                      </div>
                      <div className="flex flex-col mt-6">
-                        <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Image</label>
-                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="text" name="image" id="image" />
+                        <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Image URL</label>
+                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="text" name="image" id="image" placeholder="Enter your image url" required />
                      </div>
                      <div className="flex flex-col mt-6">
                         <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Email</label>
-                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="email" name="email" id="email" />
+                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="email" name="email" id="email" placeholder="Enter your email" required />
                      </div>
                      <div className="flex flex-col mt-6">
                         <label className="text-lg mb-2 font-medium text-gray-700" htmlFor="">Password</label>
-                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="password" name="password" id="passowrd" autoComplete="" />
+                        <input className="border bg-base-200 text-lg px-3 py-2.5 outline-none rounded font-medium" type="password" name="password" id="passowrd" placeholder="Enter your password" required autoComplete="" />
                      </div>
                      <button className="btn w-full mt-9 text-white bg-[#CC6119] hover:bg-[#d88d5a]" type="submit">Sign Up</button>
                   </form>

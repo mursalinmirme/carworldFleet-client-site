@@ -14,16 +14,13 @@ const AddProduct = () => {
     const description = form.description.value;
     const newProduct = { image, name, brand, type, price, rating, description };
     console.log(newProduct);
-    fetch(
-      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/cars",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
-      }
-    )
+    fetch("https://car-world-fleet-server-site.vercel.app/cars", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -42,7 +39,7 @@ const AddProduct = () => {
   return (
     <div className="w-11/12 mx-auto">
       <div className="border bg-base-200 lg:w-2/3 mx-auto pt-14 pb-20 p-10 mt-7 rounded-lg">
-        <h2 className="text-center font-bold text-2xl text-gray-800">
+        <h2 className="text-center font-bold text-2xl">
           Add New Product
         </h2>
         <form onSubmit={handleAddProdutc}>
@@ -129,7 +126,7 @@ const AddProduct = () => {
               placeholder="Product description"
             />
           </div>
-          <button className="btn bg-[#CC6119] text-white hover:bg-[#64391c] w-full mt-8">
+          <button className="btn bg-[#CC6119] text-white hover:bg-[#64391c] w-full mt-12">
             Add Product
           </button>
         </form>

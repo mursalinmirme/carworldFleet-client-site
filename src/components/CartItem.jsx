@@ -16,7 +16,7 @@ const CartItem = ({ cart, myCarts, setMyCarts }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/carts/${deleteId}`,
+          `https://car-world-fleet-server-site.vercel.app/carts/${deleteId}`,
           {
             method: "DELETE",
           }
@@ -46,7 +46,7 @@ const CartItem = ({ cart, myCarts, setMyCarts }) => {
       <img className="w-40 h-36" src={cart?.image} alt="" />
       <div className="">
         <Link to={`/brandsCar/${cart?.brand}/${cart?._id}`}>
-          <h6 className="text-xl font-semibold text-gray-700">{cart?.name}</h6>
+          <h6 className="text-xl font-semibold">{cart?.name}</h6>
         </Link>
         <h5 className="font-medium mt-3">Type: {cart?.type}</h5>
         <h5 className="font-medium mt-3">Price: {cart?.price}</h5>

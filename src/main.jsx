@@ -27,9 +27,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () =>
-          fetch(
-            "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/brands"
-          ),
+          fetch("https://car-world-fleet-server-site.vercel.app/brands"),
       },
       {
         path: "/addProduct",
@@ -88,7 +86,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/brandsCar/${params.brand}`
+            `https://car-world-fleet-server-site.vercel.app/brandsCar/${params.brand}`
           ),
       },
       {
@@ -100,7 +98,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/brandsCar/${params.brand}/${params.car}`
+            `https://car-world-fleet-server-site.vercel.app/brandsCar/${params.brand}/${params.car}`
           ),
       },
       {
@@ -112,7 +110,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/cars/${params.carId}`
+            `https://car-world-fleet-server-site.vercel.app/cars/${params.carId}`
           ),
       },
     ],

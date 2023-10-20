@@ -27,16 +27,13 @@ const UpdateProducts = () => {
       rating,
       description,
     };
-    fetch(
-      `https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/cars/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updateProduct),
-      }
-    )
+    fetch(`https://car-world-fleet-server-site.vercel.app/cars/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

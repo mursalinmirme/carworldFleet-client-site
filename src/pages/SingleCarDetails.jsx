@@ -8,7 +8,7 @@ const SingleCarDetails = () => {
   const { user } = useContext(authContext);
   // console.log(user?.uid);
   const getSingleCardata = useLoaderData();
-  const [getSingleCar, setgetSingleCar] = useState(getSingleCardata)
+  const [getSingleCar, setgetSingleCar] = useState(getSingleCardata);
   const { _id, name, image, brand, type, price, rating, description } =
     getSingleCar;
   // console.log(getSingleCar);
@@ -19,16 +19,13 @@ const SingleCarDetails = () => {
     const userId = user?.uid;
     const newAddToCartItem = { ...getAddCartItem, userId };
     console.log(newAddToCartItem);
-    fetch(
-      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/carts",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newAddToCartItem),
-      }
-    )
+    fetch("https://car-world-fleet-server-site.vercel.app/carts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newAddToCartItem),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
@@ -47,10 +44,10 @@ const SingleCarDetails = () => {
   return (
     <div className="w-11/12 mx-auto">
       <img className="mx-auto lg:w-1/2 mt-20" src={image} alt="" />
-      <h3 className="text-3xl font-semibold">{name}</h3>
-      <h4 className="font-semibold mt-2.5 text-gray-700">Brand: {brand}</h4>
-      <h4 className="font-semibold mt-2.5 text-gray-700">Type: {type}</h4>
-      <h4 className="font-semibold mt-2.5 text-gray-700">Price: {price} ৳</h4>
+      <h3 className="text-3xl font-semibold mt-7">{name}</h3>
+      <h4 className="font-semibold mt-2.5">Brand: {brand}</h4>
+      <h4 className="font-semibold mt-2.5">Type: {type}</h4>
+      <h4 className="font-semibold mt-2.5">Price: {price} ৳</h4>
       <div className="flex items-center">
         <ReactStars
           count={5}
@@ -62,7 +59,7 @@ const SingleCarDetails = () => {
         ></ReactStars>
         <span>(Rating: {rating})</span>
       </div>
-      <p className="font-semibold mt-2.5 text-gray-700">
+      <p className="font-semibold mt-2.5">
         Description: <span className="font-medium">{description}</span>
       </p>
       <button

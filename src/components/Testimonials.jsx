@@ -5,9 +5,7 @@ import "./Testimonials.css";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(
-      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/testimonials"
-    )
+    fetch("https://car-world-fleet-server-site.vercel.app/testimonials")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -27,25 +25,25 @@ const Testimonials = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1
-        }
+          initialSlide: 1,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div className="w-11/12 mx-auto mt-24">

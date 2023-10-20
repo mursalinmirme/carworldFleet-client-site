@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     // sign up with email and password
     const SignupWithEmailandPassword = (email, password) => {
+        setLoading(true);
        return createUserWithEmailAndPassword(auth, email, password);
     }
 
@@ -32,11 +33,11 @@ const AuthProvider = ({children}) => {
     // catch loged in user 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
             setLoading(false);
+            setUser(user);
         })
         return () => unSubscribe();
-    }, [])
+    }, [SignupWithEmailandPassword])
 
     const userLogout = () => {
         return signOut(auth);

@@ -9,16 +9,13 @@ const AddTestimonial = () => {
     const reviewTxt = form.reviewTxt.value;
     const newReview = { userName, userImg, reviewTxt };
     console.log(newReview);
-    fetch(
-      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/testimonials",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newReview),
-      }
-    )
+    fetch("https://car-world-fleet-server-site.vercel.app/testimonials", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newReview),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

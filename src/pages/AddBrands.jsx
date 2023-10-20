@@ -8,16 +8,13 @@ const AddBrands = () => {
     const brandImg = form.brandImg.value;
     const newBrand = { brandName, brandImg };
     console.log(newBrand);
-    fetch(
-      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/brands",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newBrand),
-      }
-    )
+    fetch("https://car-world-fleet-server-site.vercel.app/brands", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newBrand),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

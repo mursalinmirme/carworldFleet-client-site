@@ -6,9 +6,7 @@ const MycartPage = () => {
   const { user } = useContext(authContext);
   const [myCarts, setMyCarts] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/carts/${user?.uid}`
-    )
+    fetch(`https://car-world-fleet-server-site.vercel.app/carts/${user?.uid}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -18,7 +16,7 @@ const MycartPage = () => {
   // console.log(setMyCarts);
   return (
     <div className="w-11/12 mx-auto min-h-[270px]">
-      <h4 className="text-center mt-10 text-2xl font-semibold text-gray-700">
+      <h4 className="text-center mt-10 text-2xl font-semibold">
         Your Cart Items
       </h4>
       {myCarts.length > 0 ? (
