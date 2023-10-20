@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 const Brands = ({allBrands}) => {
-    console.log(allBrands);
+    // console.log(allBrands);
     return (
         <div className="w-11/12 mx-auto mt-20 mb-20">
             <h3 className="text-3xl text-center font-semibold text-gray-700">Popular Brands</h3>

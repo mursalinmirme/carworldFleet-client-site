@@ -9,9 +9,7 @@ const BrandView = () => {
   // load brands banner
   const [currentBanners, setCurrentBanners] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://car-world-fleet-server-site-eehj3on19-mursalinmirme.vercel.app/banners/${brand}`
-    )
+    fetch(`http://localhost:4100/banners/${brand}`)
       .then((res) => res.json())
       .then((data) => setCurrentBanners(data));
   }, []);

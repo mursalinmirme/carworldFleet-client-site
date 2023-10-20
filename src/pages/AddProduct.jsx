@@ -14,16 +14,13 @@ const AddProduct = () => {
     const description = form.description.value;
     const newProduct = { image, name, brand, type, price, rating, description };
     console.log(newProduct);
-    fetch(
-      "https://car-world-fleet-server-site-eehj3on19-mursalinmirme.vercel.app/cars",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
-      }
-    )
+    fetch("http://localhost:4100/cars", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
