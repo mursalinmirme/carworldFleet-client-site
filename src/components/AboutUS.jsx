@@ -1,14 +1,13 @@
-import React from 'react';
 import aboutUsPic from '../assets/aboutUsPic.jpg';
 import {BsCheck2Circle} from 'react-icons/bs'
 const AboutUS = () => {
     return (
         <div className='w-11/12 mx-auto mt-20 lg:mt-40'>
             <div className='flex flex-col-reverse lg:flex-row gap-16 items-center'>
-                <div className='w-[95%] lg:w-[40%]'>
-                    <img className='w-full rounded-r-full' src={aboutUsPic} alt="" />
+                <div className='w-[95%] lg:w-[50%]'>
+                    <img className='w-11/12 rounded-r-full' src={aboutUsPic} alt="" />
                 </div>
-                <div className='w-full lg:w-[60%]'>
+                <div className='w-full lg:w-[50%]'>
                     <h3 className='text-3xl lg:text-4xl text-center lg:text-left font-extrabold mb-5 lg:mb-8'>About US</h3>
                     <h6 className='text-lg lg:text-2xl leading-normal font-medium w-full lg:w-[70%] mb-5'>Discover Our Journey: Crafting Excellence in Automotive Innovation and Luxury</h6>
                     <p className='leading-relaxed'>At carWorldFleet, we invite you to discover our captivating journey. With an unwavering commitment to excellence, we are at the forefront of automotive innovation, redefining luxury, and placing customers at the heart of everything we do. Join us as we shape the future of driving and personal experiences.</p>

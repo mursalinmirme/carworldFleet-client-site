@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./Testimonials.css";
 const Testimonials = () => {
@@ -46,7 +48,7 @@ const Testimonials = () => {
     ],
   };
   return (
-    <div className="w-11/12 mx-auto mt-24">
+    <div className="w-11/12 mx-auto mt-24 overflow-hidden">
       <h2 className="text-center text-3xl font-bold">Testimonials</h2>
       <p className="text-center mt-5 font-medium text-gray-500 text-lg">
         Discover the voices of those <br /> who have experienced excellence with
