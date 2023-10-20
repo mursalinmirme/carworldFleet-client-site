@@ -15,6 +15,8 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import SingleCarDetails from "./pages/SingleCarDetails";
 import UpdateProducts from "./pages/UpdateProducts";
+import Authentication from "./authentication/Authentication";
+import AddTestimonial from "./pages/AddTestimonial";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,11 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addProduct",
-        element: <AddProduct></AddProduct>,
+        element: <Authentication><AddProduct></AddProduct></Authentication>,
       },
       {
         path: "/myCart",
-        element: <MycartPage></MycartPage>,
+        element: <Authentication><MycartPage></MycartPage></Authentication>,
       },
       {
         path: "/signup",
@@ -44,21 +46,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBrands",
-        element: <AddBrands></AddBrands>,
+        element: <Authentication><AddBrands></AddBrands></Authentication>,
       },
       {
         path: "/addBanners",
-        element: <AddBanners></AddBanners>,
+        element: <Authentication><AddBanners></AddBanners></Authentication>,
+      },
+      {
+        path: "/addTestimonials",
+        element: <Authentication><AddTestimonial></AddTestimonial></Authentication>,
       },
       {
         path: "/brandsCar/:brand",
-        element: <BrandView></BrandView>,
+        element: <Authentication><BrandView></BrandView></Authentication>,
         loader: ({ params }) =>
           fetch(`http://localhost:4100/brandsCar/${params.brand}`),
       },
       {
         path: "/brandsCar/:brand/:car",
-        element: <SingleCarDetails></SingleCarDetails>,
+        element: <Authentication><SingleCarDetails></SingleCarDetails></Authentication>,
         loader: ({ params }) =>
           fetch(
             `http://localhost:4100/brandsCar/${params.brand}/${params.car}`
@@ -66,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/cars/:carId",
-        element: <UpdateProducts></UpdateProducts>,
+        element: <Authentication><UpdateProducts></UpdateProducts></Authentication>,
         loader: ({ params }) =>
           fetch(`http://localhost:4100/cars/${params.carId}`),
       },

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactStars from "react-rating-stars-component";
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 const CartItem = ({cart, myCarts ,setMyCarts}) => {
     console.log(cart);
@@ -41,7 +42,7 @@ const CartItem = ({cart, myCarts ,setMyCarts}) => {
         <div className='flex items-center border rounded-lg shadow-md gap-6 p-5'>
             <img className='w-40 h-36' src={cart?.image} alt="" />
             <div className=''>
-              <h6 className='text-xl font-semibold text-gray-700'>{cart?.name}</h6>
+              <Link to={`/brandsCar/${cart?.brand}/${cart?._id}`}><h6 className='text-xl font-semibold text-gray-700'>{cart?.name}</h6></Link>
               <h5 className='font-medium mt-3'>Type: {cart?.type}</h5>
               <h5 className='font-medium mt-3'>Price: {cart?.price}</h5>
               <ReactStars count={5} edit={false} half={true} value={parseInt(cart?.rating)} size={25} activeColor="#CC6119"></ReactStars>
