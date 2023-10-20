@@ -67,7 +67,7 @@ const Signin = () => {
     return (
         <div className="w-full bg-base-200">
             <div className="w-11/12 mx-auto py-10">
-                <div className="w-[600px] mx-auto bg-white px-10 pt-10 pb-16">
+                <div className="lg:w-[600px] mx-auto bg-white px-10 pt-10 pb-16">
                     <p className='text-center text-[#CC6119]'>Welcom Back</p>
                   <h3 className="text-center text-2xl font-semibold mt-3">{`Let's Explore Now`}</h3>
                   <form onSubmit={handleSigninByEmail}>

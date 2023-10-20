@@ -3,7 +3,7 @@ import { BsFacebook, BsInstagram, BsPinterest, BsTwitter } from 'react-icons/bs'
 const Footer = () => {
     return (
         <div className='mt-20'>
-          <footer className="footer w-11/12 mx-auto p-10 text-base-content">
+          <footer className="footer flex flex-col justify-between lg:flex-row w-11/12 mx-auto lg:p-10 text-base-content">
   <aside>
     <img className='w-28 ' src={logo} alt="" />
     <h2 className='text-xl font-bold'>CarWorldFleet</h2>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateProducts = () => {
-  const updateItem = useLoaderData();
+  const getupdateItem = useLoaderData();
+  const [updateItem, setupdateItem] = useState(getupdateItem);
   const { _id, name, image, brand, type, price, rating, description } =
     updateItem;
 

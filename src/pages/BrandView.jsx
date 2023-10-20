@@ -4,7 +4,8 @@ import BrandViewCar from "../components/BrandViewCar";
 import BrandsAdBanner from "../components/BrandsAdBanner";
 
 const BrandView = () => {
-  const brandsViewItems = useLoaderData();
+  const getbrandsViewItems = useLoaderData();
+  const [brandsViewItems, setbrandsViewItems] = useState(getbrandsViewItems);
   const { brand } = useParams();
   // load brands banner
   const [currentBanners, setCurrentBanners] = useState([]);
@@ -34,7 +35,7 @@ const BrandView = () => {
             <h2>This brand has no product in stock.</h2>
           </div>
         ) : (
-          <div className="grid grid-cols-3 mt-16 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 mt-16 gap-5">
             {brandsViewItems?.map((brandItem) => (
               <BrandViewCar
                 key={brandItem?._id}

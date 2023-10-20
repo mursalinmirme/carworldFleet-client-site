@@ -46,10 +46,11 @@ const Navbar = () => {
         )}
       </NavLink>
       }
+      <span onClick={handleLogout} className="lg:hidden">Logout</span>
     </>
   );
   return (
-    <div className="navbar bg-base-100 w-11/12 mx-auto py-7">
+    <div className="navbar bg-base-100 w-11/12 mx-auto px-0 py-3 md:py-7">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,12 +71,12 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-5 shadow bg-base-100 rounded-none text-base space-y-2 w-60"
           >
             {listItems}
           </ul>
         </div>
-        <a className="normal-case relative flex items-center text-2xl font-saraban font-bold">
+        <a className="normal-case relative flex items-center text-xl lg:text-2xl font-saraban font-bold">
           <h1>CarWorldFleet</h1>
           <img className="w-16 absolute right-10 bottom-2.5" src={logo} alt="" />
         </a>
@@ -84,11 +85,15 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 flex space-x-8 text-lg font-medium">{listItems}</ul>
       </div>
       <div className="navbar-end gap-4">
-      <p className="font-semibold text-lg">{user?.displayName}</p>
-      <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+        {
+          user && <p className="font-semibold text-base md:text-lg">{user?.displayName}</p>
+        }
+        {
+          user && <img className="w-10 h-10 lg:w-12 lg:h-12 rounded-full" src={user?.photoURL} alt="" />
+        }
       {
         user ?
-        <button onClick={handleLogout} className="text-lg font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Logout</button> : <Link to={'/signin'}><button className="text-lg font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Login Now</button></Link>
+        <button onClick={handleLogout} className="text-lg hidden lg:block font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Logout</button> : <Link to={'/signin'}><button className="text-lg hidden lg:block font-semibold text-white btn bg-[#CC6119] hover:bg-[#d88d5a]">Login Now</button></Link>
        
       }
       </div>

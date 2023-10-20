@@ -6,7 +6,8 @@ import AboutUS from "../components/AboutUS";
 import Testimonials from "../components/Testimonials";
 
 const Home = () => {
-    const allBrands = useLoaderData();
+    const getallBrands = useLoaderData();
+    const [allBrands, setAllBrands] = useState(getallBrands);
     return (
         <div>
             <Banner></Banner>

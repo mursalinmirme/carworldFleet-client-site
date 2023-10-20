@@ -22,7 +22,7 @@ const MycartPage = () => {
         Your Cart Items
       </h4>
       {myCarts.length > 0 ? (
-        <div className="grid grid-cols-3 gap-5 mt-14">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-14">
           {myCarts.map((cart) => (
             <CartItem
               myCarts={myCarts}

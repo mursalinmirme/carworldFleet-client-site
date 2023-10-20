@@ -80,7 +80,7 @@ const Signup = () => {
     return (
         <div className="w-full bg-base-200">
             <div className="w-11/12 mx-auto py-10">
-                <div className="w-[600px] mx-auto bg-white px-10 pt-10 pb-16">
+                <div className="lg:w-[600px] mx-auto bg-white px-10 pt-10 pb-16">
                   <h3 className="text-center text-2xl font-semibold">{`Let's create an account`}</h3>
                   <form onSubmit={handleSignupWithEmail}>
                      <div className="flex flex-col mt-10">

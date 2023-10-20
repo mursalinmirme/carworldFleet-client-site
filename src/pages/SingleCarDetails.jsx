@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -7,7 +7,8 @@ import { authContext } from "../authProvider/AuthProvider";
 const SingleCarDetails = () => {
   const { user } = useContext(authContext);
   // console.log(user?.uid);
-  const getSingleCar = useLoaderData();
+  const getSingleCardata = useLoaderData();
+  const [getSingleCar, setgetSingleCar] = useState(getSingleCardata)
   const { _id, name, image, brand, type, price, rating, description } =
     getSingleCar;
   // console.log(getSingleCar);
@@ -45,7 +46,7 @@ const SingleCarDetails = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      <img className="mx-auto w-1/2 mt-20" src={image} alt="" />
+      <img className="mx-auto lg:w-1/2 mt-20" src={image} alt="" />
       <h3 className="text-3xl font-semibold">{name}</h3>
       <h4 className="font-semibold mt-2.5 text-gray-700">Brand: {brand}</h4>
       <h4 className="font-semibold mt-2.5 text-gray-700">Type: {type}</h4>

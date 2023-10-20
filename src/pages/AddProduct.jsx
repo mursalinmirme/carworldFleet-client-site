@@ -41,13 +41,13 @@ const AddProduct = () => {
   };
   return (
     <div className="w-11/12 mx-auto">
-      <div className="border bg-base-200 w-2/3 mx-auto pt-14 pb-20 p-10 mt-7 rounded-lg">
+      <div className="border bg-base-200 lg:w-2/3 mx-auto pt-14 pb-20 p-10 mt-7 rounded-lg">
         <h2 className="text-center font-bold text-2xl text-gray-800">
           Add New Product
         </h2>
         <form onSubmit={handleAddProdutc}>
-          <div className="flex gap-7 items-center mt-10">
-            <div className="flex-1">
+          <div className="flex flex-col lg:flex-row gap-7 items-center mt-10">
+            <div className="w-full lg:w-auto flex-1">
               <label className="block font-medium" htmlFor="">
                 Image
               </label>
@@ -58,7 +58,7 @@ const AddProduct = () => {
                 placeholder="Product image"
               />
             </div>
-            <div className="flex-1">
+            <div className="w-full lg:w-auto flex-1">
               <label className="block font-medium" htmlFor="">
                 Name
               </label>
@@ -70,8 +70,8 @@ const AddProduct = () => {
               />
             </div>
           </div>
-          <div className="flex gap-7 items-center mt-10">
-            <div className="flex-1">
+          <div className="flex flex-col lg:flex-row gap-7 items-center mt-10">
+            <div className="w-full lg:w-auto flex-1">
               <label className="block font-medium" htmlFor="">
                 Brand
               </label>
@@ -82,7 +82,7 @@ const AddProduct = () => {
                 placeholder="Product brand"
               />
             </div>
-            <div className="flex-1">
+            <div className="w-full lg:w-auto flex-1">
               <label className="block font-medium" htmlFor="">
                 Type
               </label>
@@ -94,8 +94,8 @@ const AddProduct = () => {
               />
             </div>
           </div>
-          <div className="flex gap-7 items-center mt-10">
-            <div className="flex-1">
+          <div className="flex flex-col lg:flex-row gap-7 items-center mt-10">
+            <div className="w-full lg:w-auto flex-1">
               <label className="block font-medium" htmlFor="">
                 Price
               </label>
@@ -106,7 +106,7 @@ const AddProduct = () => {
                 placeholder="Product price"
               />
             </div>
-            <div className="flex-1">
+            <div className="w-full lg:w-auto flex-1">
               <label className="block font-medium" htmlFor="">
                 Rating
               </label>
