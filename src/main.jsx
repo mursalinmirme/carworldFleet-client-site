@@ -1,77 +1,89 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import MainLayout from './mainLayout/MainLayout.jsx'
-import ErrorPage from './pages/ErrorPage.jsx'
-import Home from './pages/Home.jsx'
-import AddProduct from './pages/AddProduct'
-import MycartPage from './pages/MycartPage'
-import Signup from './pages/Signup'
-import Signin from './pages/Signin'
-import AddBrands from './pages/AddBrands'
-import AuthProvider from './authProvider/AuthProvider'
-import BrandView from './pages/BrandView'
-import SingleCarDetails from './pages/SingleCarDetails'
-import UpdateProducts from './pages/UpdateProducts'
-import AddBanners from './pages/AddBanners'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import AuthProvider from "./authProvider/AuthProvider";
+import "./index.css";
+import MainLayout from "./mainLayout/MainLayout.jsx";
+import AddBanners from "./pages/AddBanners";
+import AddBrands from "./pages/AddBrands";
+import AddProduct from "./pages/AddProduct";
+import BrandView from "./pages/BrandView";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import Home from "./pages/Home.jsx";
+import MycartPage from "./pages/MycartPage";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import SingleCarDetails from "./pages/SingleCarDetails";
+import UpdateProducts from "./pages/UpdateProducts";
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:4100/brands'),
+        loader: () =>
+          fetch(
+            "https://car-world-fleet-server-site-eehj3on19-mursalinmirme.vercel.app/brands"
+          ),
       },
       {
-        path: '/addProduct',
+        path: "/addProduct",
         element: <AddProduct></AddProduct>,
       },
       {
-        path: '/myCart',
+        path: "/myCart",
         element: <MycartPage></MycartPage>,
       },
       {
-        path: '/signup',
+        path: "/signup",
         element: <Signup></Signup>,
       },
       {
-        path: '/signin',
+        path: "/signin",
         element: <Signin></Signin>,
       },
       {
-        path: '/addBrands',
+        path: "/addBrands",
         element: <AddBrands></AddBrands>,
       },
       {
-        path: '/addBanners',
+        path: "/addBanners",
         element: <AddBanners></AddBanners>,
       },
       {
-        path: '/brandsCar/:brand',
+        path: "/brandsCar/:brand",
         element: <BrandView></BrandView>,
-        loader: ({params}) => fetch(`http://localhost:4100/brandsCar/${params.brand}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://car-world-fleet-server-site-eehj3on19-mursalinmirme.vercel.app/brandsCar/${params.brand}`
+          ),
       },
       {
-        path: '/brandsCar/:brand/:car',
+        path: "/brandsCar/:brand/:car",
         element: <SingleCarDetails></SingleCarDetails>,
-        loader: ({params}) => fetch(`http://localhost:4100/brandsCar/${params.brand}/${params.car}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://car-world-fleet-server-site-eehj3on19-mursalinmirme.vercel.app/brandsCar/${params.brand}/${params.car}`
+          ),
       },
       {
-        path: '/cars/:carId',
+        path: "/cars/:carId",
         element: <UpdateProducts></UpdateProducts>,
-        loader: ({params}) => fetch(`http://localhost:4100/cars/${params.carId}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://car-world-fleet-server-site-eehj3on19-mursalinmirme.vercel.app/cars/${params.carId}`
+          ),
       },
-    ]
-  }
-])
-ReactDOM.createRoot(document.getElementById('root')).render(
+    ],
+  },
+]);
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-       <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
