@@ -9,13 +9,16 @@ const AddBanners = () => {
     const bannerImg = form.bannerImg.value;
     const newBrand = { brandName, discount, bannerImg };
     console.log(newBrand);
-    fetch("http://localhost:4100/banners", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newBrand),
-    })
+    fetch(
+      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/banners",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newBrand),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

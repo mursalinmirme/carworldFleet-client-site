@@ -1,10 +1,41 @@
+import Swal from "sweetalert2";
 
 const AddTestimonial = () => {
-    const handleSubmitTestimonials = () => {
-        alert('hi')
-    }
-    return (
-        <div className="w-11/12 mx-auto">
+  const handleSubmitTestimonials = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const userName = form.userName.value;
+    const userImg = form.userImg.value;
+    const reviewTxt = form.reviewTxt.value;
+    const newReview = { userName, userImg, reviewTxt };
+    console.log(newReview);
+    fetch(
+      "https://car-world-fleet-server-site-705dg2ceg-mursalinmirme.vercel.app/testimonials",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newReview),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            title: "Review submite Successfully",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          form.reset();
+        }
+      });
+  };
+  return (
+    <div className="w-11/12 mx-auto">
       <div className="border bg-base-200 w-[550px] mx-auto pt-14 pb-12 p-10 mt-7 rounded-lg">
         <h2 className="text-center font-bold text-2xl text-gray-800">
           Give a Experience Review
@@ -17,8 +48,9 @@ const AddTestimonial = () => {
             <input
               className="border w-full px-3 text-lg py-3 outline-none mt-2"
               type="text"
-              name="brandName"
+              name="userName"
               placeholder="User Name"
+              required
             />
           </div>
           <div className="mt-6">
@@ -28,15 +60,21 @@ const AddTestimonial = () => {
             <input
               className="border w-full px-3 text-lg py-3 outline-none mt-2"
               type="text"
-              name="brandImg"
+              name="userImg"
               placeholder="User Image"
+              required
             />
           </div>
           <div className="mt-6">
             <label className="block font-medium" htmlFor="">
               Review Text
             </label>
-            <textarea className="resize-none mt-2 w-full h-32" name="" id="" ></textarea>
+            <textarea
+              className="resize-none border-none p-3 outline-none mt-2 w-full h-32"
+              name="reviewTxt"
+              required
+              id=""
+            ></textarea>
             {/* <input
               className="border w-full px-3 text-lg py-3 outline-none mt-2"
               type="text"
@@ -50,7 +88,7 @@ const AddTestimonial = () => {
         </form>
       </div>
     </div>
-    );
+  );
 };
 
 export default AddTestimonial;
